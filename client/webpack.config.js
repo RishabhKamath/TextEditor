@@ -18,7 +18,18 @@ module.exports = () => {
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
-      
+      //generate html file
+      new HtmlWebpackPlugin({
+        template: './index.html',
+        title: 'JATE'
+        favicon: './favicon.ico'
+      }),
+
+      //creating service worker
+      new InjectManifest({
+        swSrc: './src-sw.js',
+        swDest: 'service-worker.js',
+      }),
     ],
 
     module: {
